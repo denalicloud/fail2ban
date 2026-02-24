@@ -1,0 +1,5 @@
+# fail2ban local configuration file
+[DEFAULT]
+bantime.increment = true
+bantime.factor    = 1
+bantime.maxtime   = 604800  ; max 1 settimana
