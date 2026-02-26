@@ -1,5 +1,6 @@
 # fail2ban local configuration file
 [DEFAULT]
 bantime.increment = true
-bantime.factor    = 1
-bantime.maxtime   = 604800  ; max 1 settimana
+bantime.factor    = 2
+bantime.maxtime   = 604800  ; max 1 week
+ignoreip = 127.0.0.1/8 ::1
