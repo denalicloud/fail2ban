@@ -1,0 +1,13 @@
+[Unit]
+Description=Load ip-blacklist into fail2ban after startup
+After=fail2ban.service
+Requires=fail2ban.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 5
+ExecStart=/bin/bash -c 'while read ip; do [[ -z "$ip" || "$ip" == \#* ]] && continue; fail2ban-client set ip-blacklist banip "$ip"; done < /etc/fail2ban/ip-blacklist.txt'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
